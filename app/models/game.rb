@@ -52,39 +52,41 @@ class Game < ApplicationRecord
   end
 
   private
-  def up_diag(x,y)
+
+  def diag_up(x,y)
     (0..3).map do |i|
       @game[x + i][y +i]
-    end.join
-  end
-  def down_diag(x,y)
-    3.downto(0).map do |i|
-      @game[x + i][y -i]
-    end.join
+    end
   end
 
+  def diag_down(x,y)
+    (0..3).map do |i|
+      #puts "x,y =#{x}, #{y}, xi,yi = #{x + i}, #{y -i}, gb = #{@game[x + i][y - i]}"
+      @game[x + i][y - i]
+    end
+  end
 
   def check_diagonals
     array = []
+
     (0..3).each do |x| # Only makes sense to start from first 4 columns
       (0..2).each do |y| # Only makes sense to start from first 3 rows
-        array << up_diag(x,y)
+        array << diag_up(x,y)
       end
     end
 
-    (0..3).each do |x| # Only makes since to start from first 4 columns
-      6.downto(0).each do |y|
-        array << down_diag(x,y)
+    (0..3).each do |x| # Only makes sense to start from first 4 columns
+      5.downto(3).each do |y| # Only makes sense to start from first 3 rows
+        array << diag_down(x,y)
       end
     end
 
+    #return if any condition is true
     array.each do |item|
-      return true if item.match(/bbbb|rrrr/)
+      return true if check_for_match(item)
     end
     false
   end
-
-
 
   def check_rows
     # Flip rows into columns, for fast check
@@ -96,9 +98,8 @@ class Game < ApplicationRecord
       end
       array << tmp_array
     end
-
     array.each do |c|
-      return true if c.join.match(/bbbb|rrrr/)
+      return true if check_for_match(c)
     end
     false
   end
@@ -106,8 +107,15 @@ class Game < ApplicationRecord
   def check_columns
     # Look for 4 items in a row
     @game.each do |c|
-      return true if c.join.match(/bbbb|rrrr/)
+      return true if check_for_match(c)
     end
     false
+  end
+
+  # check if we have 4 in a row from an array
+  # ["b", nil, "b", "b", "b", nil, nil]
+  def check_for_match(item)
+    # Replace nil's with spaces, so match works
+    item.map{|x| x.nil? ? ' ' : x}.join.match(/bbbb|rrrr/)
   end
 end
