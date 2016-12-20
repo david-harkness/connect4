@@ -1,0 +1,56 @@
+// Place all the styles related to the play controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.row {
+
+}
+#errors {
+  color: red;
+}
+
+#red-won {
+  display:none;
+  color: red;
+
+}
+#blue-won {
+  display: none;
+  color:red;
+}
+#connect4 {
+  border-spacing: 0px;
+  border-collapse: collapse;
+  background-color:#f9f9f9;
+  #connect4-header-row {
+    background-color: yellow;
+    height: 2em;
+    border: solid yellow;
+    .entry-point {
+      height: 3em;
+      width: 3em;
+      border: 4px solid black;
+      border-bottom: 4px solid blue
+    }
+  }
+  .game-col {
+    border: 4px solid blue;
+    height: 3em;
+    width: 3em;
+
+  }
+  .red-token {
+    border-radius: 50%;
+    width: 1.5em;
+    height: 1.5em;
+    background-color: red;
+  }
+  .blue-token {
+    border-radius: 50%;
+    width: 1.5em;
+    height: 1.5em;
+
+    background-color: blue;
+  }
+}

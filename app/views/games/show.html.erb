@@ -1,0 +1,44 @@
+<h1>Connect 4</h1>
+<hr>
+
+<div class="row">
+
+
+  <div id="left-column" class="col-md-3">
+    <div id="Game Over">
+      <h2 id="blue-won">Blue Won!</h2>
+      <h2 id="red-won">Red Won!</h2>
+      <hr/>
+    </div>
+    <h4>Instructions</h4>
+    <span>Use Keyboard arrows for left and right</span>
+    <br/>
+    <span>Use Spacebar to drop token</span>
+    <br/>
+    <br/>
+    <hr/>
+    <%= button_to "New Game", games_path, :class=>'btn btn-primary btn-sm', method: :post, game: {} -%>
+
+  </div>
+
+
+  <div id="game-area" class="col-md-6">
+    <p id="errors"></p>
+    <table id="connect4">
+      <tr id="connect4-header-row">
+        <td id="entry-col-0" data-col="0" class="entry-point"><div id="drop-token" class="blue-token"></div></td>
+        <td id="entry-col-1" data-col="1" class="entry-point"></td>
+        <td id="entry-col-2" data-col="2" class="entry-point"></td>
+        <td id="entry-col-3" data-col="3" class="entry-point"></td>
+        <td id="entry-col-4" data-col="4" class="entry-point"></td>
+        <td id="entry-col-5" data-col="5" class="entry-point"></td>
+        <td id="entry-col-6" data-col="6" class="entry-point"></td>
+      </tr>
+      <%=game_rows -%>
+    </table>
+  </div>
+</div>
+
+<script type="text/javascript">
+  window.current_game_id=<%=@game.id-%>;
+</script>
