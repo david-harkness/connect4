@@ -6,14 +6,13 @@ class Game < ApplicationRecord
 
   before_save :save_game_state
 
+  attr :game
+
   # 1 array for each column
   def default_board
     [ [], [], [], [], [], [], [] ]
   end
 
-  def game
-    @game
-  end
 
   def load_game
     if games_state
@@ -67,8 +66,8 @@ class Game < ApplicationRecord
 
   def check_diagonals
     array = []
-    (0..3).each do |x| # Only makes since to start from first 4 columns
-      (0..2).each do |y| # Only makes since to start from first 3 rows
+    (0..3).each do |x| # Only makes sense to start from first 4 columns
+      (0..2).each do |y| # Only makes sense to start from first 3 rows
         array << up_diag(x,y)
       end
     end

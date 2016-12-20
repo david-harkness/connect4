@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
-class self.Game
+class @Game
   constructor: ->
     $(document).keydown (e) =>
       switch e.which
@@ -65,8 +65,6 @@ class self.Game
 
 
   render: ()=>
-
-
     for x in [0..5]
       for y in [0..6]
         if @game[x][y] == 'r'
