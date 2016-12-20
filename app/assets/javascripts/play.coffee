@@ -7,7 +7,7 @@ class @Game
   constructor: ->
     $(document).keydown (e) =>
       switch e.which
-        when 32
+        when 32,40,36
           @dropIt()
         when 37
           @move_token_left()

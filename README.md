@@ -3,7 +3,7 @@
 ###Instructions
 
 * Using left and right arrow for moving the token.
-* Use spacebar to drop token
+* Use up / down arrow or spacebar to drop token
 
 Game is turn based.  Winning condition is checked after every move.
 Once there is a winner, the token stays either red or blue.
