@@ -89,8 +89,16 @@ class Game < ApplicationRecord
 
   def check_rows
     # Flip rows into columns, for fast check
-    rotate = (0..6).map { |i| @game[i] }
-    rotate.each do |c|
+    array = []
+    (0..5).each do |x|
+      tmp_array = []
+      (0..6).each do |y|
+        tmp_array << @game[y][x]
+      end
+      array << tmp_array
+    end
+
+    array.each do |c|
       return true if c.join.match(/bbbb|rrrr/)
     end
     false
