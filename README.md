@@ -1,26 +1,46 @@
-# README
+# Connect 4
 
-Example of Connect 4 game
+###Instructions
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Using left and right arrow for moving the token.
+* Use spacebar to drop token
 
-Things you may want to cover:
+Game is turn based.  Winning condition is checked after every move.
+Once there is a winner, the token stays either red or blue.
+For fun, the winning player can fill up the board if they wish.
 
-* Ruby version
+#### Internal Mechanics
+Having two game players is handled internally by who is red and not red. *red_turn* in db.
 
-* System dependencies
+Only table being used is *Games*
+Winning condition is checked everytime a valid move is played.
+A winner can continue adding tokens.
 
-* Configuration
 
-* Database creation
+### Javascript
+Most of the Javascript logic is located in a coffeescript file called
+app/javascripts/play.coffee
 
-* Database initialization
+### Backend
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+Get state of a game
 
-* Deployment instructions
+```
+GET /games/11.json
+```
 
-* ...
+Add a token
+
+```
+POST /api/v1/games/add_token',  {id:[GAME ID], column: [COLUMN]}
+```
+
+
+#### TODO
+* Allow clicking on column header to select and drop token
+* Adjust show.json to use API route
+* Remove global refrences to window.game in class Game in coffeescript
+* Add login system so that games have players.
+* Add Testing
+* Add Security
