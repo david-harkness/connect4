@@ -51,6 +51,14 @@ class Game < ApplicationRecord
     false
   end
 
+  def blue_turn?
+    !self.red_turn
+  end
+
+  def red_turn?
+    !!self.red_turn
+  end
+
   private
 
   def diag_up(x,y)

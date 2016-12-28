@@ -1,5 +1,10 @@
 # Connect 4
 
+Testing
+```
+rake spec
+```
+
 ###Instructions
 
 * Using left and right arrow for moving the token.
