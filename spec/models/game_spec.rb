@@ -80,6 +80,16 @@ RSpec.describe Game, type: :model do
     end
   end
 
+  context "Invalid moves" do
+    it "should not allow moves beyond column 7" do
+      expect {@game.add_token(7) }.to raise_exception
+    end
+
+    it "should not allow more than 6 elements in a column" do
+      6.times.each { @game.add_token(0)}
+      expect(@game.add_token(0)).to be_falsey
+    end
+  end
 
   context "Regression" do
     # Fix for bug reported by Zach

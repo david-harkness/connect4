@@ -1,9 +1,5 @@
 # Connect 4
 
-Testing
-```
-rake spec
-```
 
 ###Instructions
 
@@ -13,6 +9,14 @@ rake spec
 Game is turn based.  Winning condition is checked after every move.
 Once there is a winner, the token stays either red or blue.
 For fun, the winning player can fill up the board if they wish.
+
+### Testing
+see spec/models/game_spec.rb
+
+```
+rake db:test:prepare
+rake spec
+```
 
 #### Internal Mechanics
 Having two game players is handled internally by who is red and not red. *red_turn* in db.
