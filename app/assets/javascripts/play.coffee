@@ -54,7 +54,7 @@ class @Game
       $('#drop-token').removeClass('red-token')
 
   prerender: ()=>
-    $.getJSON "/games/#{window.current_game_id}.json", (data) ->
+    $.getJSON "/api/v1/games/game_state/#{window.current_game_id}.json", (data) ->
       gs = JSON.parse(data['games_state'])
       window.game.set_token(data.red_turn)
       window.game.set_won(data.won, data.red_turn)

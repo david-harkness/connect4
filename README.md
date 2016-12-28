@@ -23,16 +23,16 @@ A winner can continue adding tokens.
 
 
 ### Javascript
-Most of the Javascript logic is located in a coffeescript file called
+Most of the Javascript logic is located in a coffeescript file 
 app/javascripts/play.coffee
 
-### Backend
+### Backend API
 
 
 Get state of a game
 
 ```
-GET /games/11.json
+GET /api/v1/games/game_state/[ID].json
 ```
 
 Add a token

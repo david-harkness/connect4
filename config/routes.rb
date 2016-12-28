@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     scope '/v1' do
       scope '/games' do
         post '/add_token' => "games#add_token"
+        get '/game_state/:id' => 'games#show'
       end
     end
   end
